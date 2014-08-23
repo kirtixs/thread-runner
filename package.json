@@ -1,0 +1,11 @@
+{
+  "name": "thread-runner",
+  "version": "0.1.0",
+  "description": "limit the number of async tasks to a set limit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "redshark1802",
+  "license": "MIT"
+}
