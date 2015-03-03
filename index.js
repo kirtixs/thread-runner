@@ -67,6 +67,12 @@ Thread.prototype.secureMaxThreadsLimit = function () {
  */
 Thread.prototype.run = function () {
 
+
+    //stop immediately if there is no work
+    if(this.workStack.length === 0){
+        return this.callback([]);
+    }
+
     this.secureMaxThreadsLimit();
 
     for (this.runningThreads = 0; this.runningThreads < this.maxThreads; this.runningThreads++) {
