@@ -32,9 +32,9 @@ describe('Integration', function () {
     });
 
     it('should run parallel with 2 threads', function (done) {
-        this.timeout(5000);
-        var stack = ['250', '200', '150', '100', '50'],
-            expectedResponse = [2000, 2500, 1500, 1000, 500];
+        this.timeout(50000);
+        var stack = ['100', '90', '60', '30', '10'],
+            expectedResponse = [900, 1000, 300, 100, 600];
 
         var thread = new Thread(threadedAsyncFunction, stack, function (result) {
             result.should.deepEqual(expectedResponse);
