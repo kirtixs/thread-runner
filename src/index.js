@@ -126,6 +126,23 @@ Thread.prototype.emit = function(result){
     }
 };
 
+/**
+ *
+ * proxy method for process.nextTick used to enforce asynchronicity
+ *
+ * @param result
+ */
+var nextThread = function(result) {
+
+    var that = this;
+    process.nextTick(function() {
+        if(that.isRunning()){
+            that.emit(result);
+            that.threadInstance(result);
+        }
+    });
+};
+
 
 /**
  * actual runner
@@ -137,21 +154,13 @@ Thread.prototype.threadInstance = function (result) {
     }
 
     if (this.isRunning() && this.workLeft()) {
-
         var currentLoopIndex = this.index,
             stackElement = this.workStack[currentLoopIndex],
             that = this;
 
-
-        this.threadedFunction(stackElement, function (result) {
-            if(that.isRunning()){
-                that.emit(result);
-                that.threadInstance(result);
-            }
-        });
+        this.threadedFunction(stackElement, nextThread.bind(that));
 
         this.index++;
-
     } else {
         this.runningThreads--;
         if (this.threadsFinished()) {
