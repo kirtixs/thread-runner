@@ -158,7 +158,7 @@ Thread.prototype.threadInstance = function (result) {
             stackElement = this.workStack[currentLoopIndex],
             that = this;
 
-        this.threadedFunction(stackElement, nextThread.bind(that));
+        this.threadedFunction(stackElement, nextThread.bind(that), this.workStack);
 
         this.index++;
     } else {

@@ -11,12 +11,19 @@ var Thread = require('thread-runner'),
  * @param stackElement single element from workStack
  * @param callback
  */
-var functionToBeThreaded = function (stackElement, callback) {
+var functionToBeThreaded = function (stackElement, callback, stack) {
 
     var timeout = stackElement * 1000;
     console.log(timeout);
 
     setTimeout(function () {
+        
+        /**
+         * you even can add new elements to the stack
+         * stack.push('1');
+         *
+         */
+    
         return callback(timeout);
     }, timeout);
 };
