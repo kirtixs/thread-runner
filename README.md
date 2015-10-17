@@ -11,7 +11,7 @@ var Thread = require('thread-runner'),
  * @param stackElement single element from workStack
  * @param callback
  */
-var functionToBeThreaded = function (stackElement, callback, stack) {
+var threadedFunction = function (stackElement, callback, stack) {
 
     var timeout = stackElement * 1000;
     console.log(timeout);
@@ -28,17 +28,17 @@ var functionToBeThreaded = function (stackElement, callback, stack) {
     }, timeout);
 };
 
-//will be called once every element in workStack has been processed by functionToBeThreaded.
+//will be called once every element in workStack has been processed by threadedFunction.
 var workStackDone = function(results){
     console.log('all results', results);
 };
 
-var thread = new Thread(functionToBeThreaded, workStack, workStackDone);
+var thread = new Thread(threadedFunction, workStack, workStackDone);
 
 //set the number of concurrent threads, default 10
 thread.setMaxThreads(2);
 
-//will be called every time functionToBeThreaded is done processing a stackElement
+//will be called every time threadedFunction is done processing a stackElement
 var singleResult = function(result){
     console.log('single result', result);
 };
