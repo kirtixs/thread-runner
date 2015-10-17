@@ -1,3 +1,5 @@
+# Thread-runner [![Build Status](https://travis-ci.org/redshark1802/thread-runner.svg)](https://travis-ci.org/redshark1802/thread-runner)
+
 ```javascript
 
 var Thread = require('thread-runner'),
