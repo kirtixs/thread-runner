@@ -1,6 +1,6 @@
 {
   "name": "thread-runner",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "limit the number of async tasks to a set limit",
   "main": "src/index.js",
   "scripts": {
