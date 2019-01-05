@@ -1,5 +1,7 @@
 # Thread-runner [![Build Status](https://travis-ci.org/redshark1802/thread-runner.svg)](https://travis-ci.org/redshark1802/thread-runner)
 
+Limit the number of asynchronous threads. Useful for doing a large amount of HTTP requests and other heavy tasks. 
+
 ```javascript
 
 var Thread = require('thread-runner'),
